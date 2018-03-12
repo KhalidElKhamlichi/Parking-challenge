@@ -29,12 +29,10 @@ public class Parking {
     }
 
     public void addPedestrianExit(int i) {
-//        System.out.println("available bays: "+getAvailableBays());
         parkingSpots.set(i, new PedestrianExit());
     }
 
     public void addDisabledBay(int i) {
-//        System.out.println("list size: "+parkingSpots.size()+" - actual size: "+this.size);
         parkingSpots.set(i, new DisabledBay());
     }
 
@@ -42,67 +40,50 @@ public class Parking {
 
         Car car = CarFactory.getCar(c);
 
-        List<ParkingSpot> closestSpots = getClosestSpotsToPedestrianExit(car);
+        ParkingSpot closestSpot = getClosestSpotToPedestrianExit(car);
 
-        if (closestSpots.isEmpty())
+        if (closestSpot == null)
             return -1;
 
-        ParkingSpot parkingSpot = getClosestSpotToEntrance(closestSpots);
 
-        parkingSpot.parkCar(car.getName());
+        closestSpot.parkCar(car.getName());
 
-        return parkingSpots.indexOf(parkingSpot);
+        return parkingSpots.indexOf(closestSpot);
     }
 
-    private ParkingSpot getClosestSpotToEntrance(List<ParkingSpot> closestSpots) {
-
-        ParkingSpot parkingSpot = closestSpots.get(0);
-
-        int min = Integer.MAX_VALUE;
-        for(ParkingSpot spot : closestSpots) {
-
-            if(parkingSpots.indexOf(spot) < min) {
-                parkingSpot = spot;
-                min = parkingSpots.indexOf(spot);
-            }
-
-        }
-
-        return parkingSpot;
-    }
-
-    private List<ParkingSpot> getClosestSpotsToPedestrianExit(Car car) {
+    private ParkingSpot getClosestSpotToPedestrianExit(Car car) {
         List<ParkingSpot> pedestrianExits = getPedestrianExits();
 
-        List<ParkingSpot> closestParkingSpots = new ArrayList<>();
+        ParkingSpot closestParkingSpot = null;
 
         int searchRange = 1;
 
-        while (closestParkingSpots.isEmpty()) {
+        while (closestParkingSpot == null && searchRange < parkingSpots.size()) {
 
             for (ParkingSpot pedestrianExit : pedestrianExits) {
 
                 int indexOfPedestrianExit = parkingSpots.indexOf(pedestrianExit);
                 int leftIterator = indexOfPedestrianExit - searchRange;
                 int rightIterator = indexOfPedestrianExit + searchRange;
+
                 if(leftIterator >= 0 && rightIterator < parkingSpots.size()) {
+
                     if (parkingSpots.get(leftIterator).canPark(car)) {
-                        closestParkingSpots.add(parkingSpots.get(leftIterator));
+                        closestParkingSpot = parkingSpots.get(leftIterator);
+                        break;
                     }
 
                     if (parkingSpots.get(rightIterator).canPark(car)) {
-                        closestParkingSpots.add(parkingSpots.get(rightIterator));
+                        closestParkingSpot = parkingSpots.get(rightIterator);
+                        break;
                     }
                 }
 
             }
             searchRange++;
-            if(searchRange > parkingSpots.size()) {
-                break;
-            }
 
         }
-        return closestParkingSpots;
+        return closestParkingSpot;
 
     }
 
