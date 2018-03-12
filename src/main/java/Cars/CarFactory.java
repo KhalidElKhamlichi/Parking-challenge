@@ -1,3 +1,5 @@
+package Cars;
+
 public class CarFactory {
     public static Car getCar(char c) {
         if(c == 'D')

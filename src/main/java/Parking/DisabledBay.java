@@ -1,3 +1,8 @@
+package Parking;
+
+import Cars.Car;
+import Cars.DisabledCar;
+
 public class DisabledBay extends ParkingSpot{
 
     public static final char initialRepresentation = '@';

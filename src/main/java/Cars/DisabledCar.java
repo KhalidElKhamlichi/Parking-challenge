@@ -1,4 +1,6 @@
-public class DisabledCar extends Car{
+package Cars;
+
+public class DisabledCar extends Car {
 
     public final char name = 'D';
 

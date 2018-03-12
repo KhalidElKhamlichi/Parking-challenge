@@ -1,3 +1,5 @@
+package Parking;
+
 public class ParkingBuilder {
 
     private Parking parking;

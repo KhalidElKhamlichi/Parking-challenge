@@ -2,6 +2,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import Parking.Parking;
+import Parking.ParkingBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,12 +27,12 @@ public class ParkingTest
     private Parking parking;
 
     ///////////////////////////
-    // Parking filling tests //
+    // Parking.Parking filling tests //
     ///////////////////////////
 
     /**
      * Setting up the parking for the rest of the tests For the remaining of the exercice, this parking will called
-     * "The Parking" (case sensitive)
+     * "The Parking.Parking" (case sensitive)
      */
     @Before
     public void setUp()
@@ -40,7 +42,7 @@ public class ParkingTest
     }
 
     /**
-     * The Parking has to look like this : 
+     * The Parking.Parking has to look like this :
      * UUUUU 
      * U=UU@
      * @U=UU
@@ -56,7 +58,7 @@ public class ParkingTest
 
     /**
      * When you park a car, you want it to be close to a pedestrian exit. So if the car C parks, it will be at the
-     * position 7 of The Parking like so : 
+     * position 7 of The Parking.Parking like so :
      * UUUUU 
      * U=CU@
      * @U=UU
@@ -83,7 +85,7 @@ public class ParkingTest
 
     /**
      * When parking, we look for the closest bay to any pedestrian exit. If more than one has been found, pick the
-     * closest one to the entrance of The Parking. So if the car C parks, it will be at the position 7 of The Parking
+     * closest one to the entrance of The Parking.Parking. So if the car C parks, it will be at the position 7 of The Parking.Parking
      * like so : 
      * UUUUU 
      * U=CU@
@@ -122,7 +124,7 @@ public class ParkingTest
     /**
      * Cars named D can only park on the disabled bays. The same rules apply to the D cars regarding trying to be close
      * to a pedestrian exit and to the entrance. So if the first D car parks, it will be at the position 10 of The
-     * Parking like so : UUUUU U=UU@ DU=UU UUUUU UUUUU Then comes the second D car : 
+     * Parking.Parking like so : UUUUU U=UU@ DU=UU UUUUU UUUUU Then comes the second D car :
      * UUUUU 
      * U=UUD 
      * DU=UU 
@@ -168,21 +170,21 @@ public class ParkingTest
     }
 
     /**
-     * After we have parked all the cars, here's how The Parking should look :
+     * After we have parked all the cars, here's how The Parking.Parking should look :
      * UUUUU
      * C=CUD
      * DM=MU
      * UUUUU
      * UUUUU
-     * The Parking has 17 bays left
+     * The Parking.Parking has 17 bays left
      * After we try to unpark the car at position 3, nothing should happen because there are no cars there.
-     * If we unpark the car at the position 13, The Parking then looks like :
+     * If we unpark the car at the position 13, The Parking.Parking then looks like :
      * UUUUU
      * C=CUD
      * DM=UU
      * UUUUU
      * UUUUU
-     * The Parking has 18 bays left
+     * The Parking.Parking has 18 bays left
      */
     @Test
     public void testUnparkCarToString()

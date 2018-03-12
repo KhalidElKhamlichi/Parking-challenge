@@ -1,3 +1,7 @@
+package Parking;
+
+import Cars.Car;
+
 public class PedestrianExit extends ParkingSpot {
 
     private final char representation = '=';

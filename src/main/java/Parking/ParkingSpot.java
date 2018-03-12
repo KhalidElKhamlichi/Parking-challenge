@@ -1,3 +1,8 @@
+package Parking;
+
+import Cars.Car;
+import Cars.DisabledCar;
+
 public class ParkingSpot {
 
     private char representation = 'U';
@@ -28,13 +33,13 @@ public class ParkingSpot {
         this.representation = carRepresentation;
     }
 
+    public void unparkCar() {
+        this.setRepresentation(initialRepresentation);
+    }
+
     @Override
     public String toString() {
         return String.valueOf(this.representation);
-    }
-
-    public void unparkCar() {
-        this.setRepresentation(initialRepresentation);
     }
 
 

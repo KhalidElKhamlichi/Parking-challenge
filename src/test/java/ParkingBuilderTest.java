@@ -1,5 +1,7 @@
 import static org.junit.Assert.assertEquals;
 
+import Parking.Parking;
+import Parking.ParkingBuilder;
 import org.junit.Test;
 
 
@@ -19,7 +21,7 @@ public class ParkingBuilderTest
 {
 
     ////////////////////////////
-    // Parking building tests //
+    // Parking.Parking building tests //
     ////////////////////////////
 
     /**
