@@ -21,7 +21,7 @@ public class Parking {
     public int getAvailableBays() {
         int availableBays = 0;
         for(ParkingSpot parkingSpot : parkingSpots) {
-            if(parkingSpot.isEmpty()) {
+            if(parkingSpot.canPark()) {
                 availableBays++;
             }
         }
@@ -39,11 +39,18 @@ public class Parking {
     }
 
     public int parkCar(char c) {
+
         Car car = CarFactory.getCar(c);
+
         List<ParkingSpot> closestSpots = getClosestSpotsToPedestrianExit(car);
+
+        if (closestSpots.isEmpty())
+            return -1;
+
         ParkingSpot parkingSpot = getClosestSpotToEntrance(closestSpots);
+
         parkingSpot.parkCar(car.getName());
-//        System.out.println(toString());
+
         return parkingSpots.indexOf(parkingSpot);
     }
 
@@ -68,22 +75,32 @@ public class Parking {
         List<ParkingSpot> pedestrianExits = getPedestrianExits();
 
         List<ParkingSpot> closestParkingSpots = new ArrayList<>();
+
+        int searchRange = 1;
+
         while (closestParkingSpots.isEmpty()) {
+
             for (ParkingSpot pedestrianExit : pedestrianExits) {
 
                 int indexOfPedestrianExit = parkingSpots.indexOf(pedestrianExit);
-                int it1 = indexOfPedestrianExit - 1;
-                int it2 = indexOfPedestrianExit + 1;
+                int leftIterator = indexOfPedestrianExit - searchRange;
+                int rightIterator = indexOfPedestrianExit + searchRange;
+                if(leftIterator >= 0 && rightIterator < parkingSpots.size()) {
+                    if (parkingSpots.get(leftIterator).canPark(car)) {
+                        closestParkingSpots.add(parkingSpots.get(leftIterator));
+                    }
 
-                if (parkingSpots.get(it1).canPark(car))
-                    closestParkingSpots.add(parkingSpots.get(it1));
+                    if (parkingSpots.get(rightIterator).canPark(car)) {
+                        closestParkingSpots.add(parkingSpots.get(rightIterator));
+                    }
+                }
 
-                if (parkingSpots.get(it2).canPark(car))
-                    closestParkingSpots.add(parkingSpots.get(it2));
-
-                it1--;
-                it2++;
             }
+            searchRange++;
+            if(searchRange > parkingSpots.size()) {
+                break;
+            }
+
         }
         return closestParkingSpots;
 
@@ -100,8 +117,14 @@ public class Parking {
         return pedestrianExits;
     }
 
-    public boolean unparkCar(int firstCarBayIndex) {
-        return false;
+    public boolean unparkCar(int index) {
+        ParkingSpot parkingSpot = parkingSpots.get(index);
+
+        if (parkingSpot.isEmpty())
+            return false;
+
+        parkingSpot.unparkCar();
+        return true;
     }
 
     @Override

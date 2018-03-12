@@ -13,4 +13,8 @@ public class DisabledBay extends ParkingSpot{
     }
 
 
+    @Override
+    public void unparkCar() {
+        super.setRepresentation(initialRepresentation);
+    }
 }

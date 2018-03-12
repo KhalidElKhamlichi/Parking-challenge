@@ -14,6 +14,11 @@ public class PedestrianExit extends ParkingSpot {
 
     @Override
     public boolean isEmpty() {
+        return true;
+    }
+
+    @Override
+    public boolean canPark() {
         return false;
     }
 }

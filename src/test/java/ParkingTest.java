@@ -131,78 +131,78 @@ public class ParkingTest
      * There will then be 21 bays remaining. 
      * The third D car has no more disabled bays left for it to park.
      */
-//    @Test
-//    public void testParkCarDisabled()
-//    {
-//        assertEquals(10, parking.parkCar('D'));
-//        assertEquals(22, parking.getAvailableBays());
-//
-//        assertEquals(5, parking.parkCar('D'));
-//        assertEquals(21, parking.getAvailableBays());
-//
-//        assertEquals(-1, parking.parkCar('D'));
-//        assertEquals(21, parking.getAvailableBays());
-//
-//        assertEquals("UUUUU\nU=UUD\nDU=UU\nUUUUU\nUUUUU", parking.toString());
-//    }
-//
-//
-//
-//    /**
-//     * After having parked all the cars, it is only natural to be able to unpark them.
-//     */
-//    @Test
-//    public void testUnparkCar()
-//    {
-//        final int firstCarBayIndex = parking.parkCar('C');
-//        assertTrue(parking.unparkCar(firstCarBayIndex));
-//        assertEquals(23, parking.getAvailableBays());
-//        assertFalse(parking.unparkCar(firstCarBayIndex));
-//
-//        final int secondCarBayIndex = parking.parkCar('D');
-//        assertTrue(parking.unparkCar(secondCarBayIndex));
-//        assertEquals(23, parking.getAvailableBays());
-//        assertFalse(parking.unparkCar(secondCarBayIndex));
-//
-//        assertFalse(parking.unparkCar(FIRSTUPEDESTRIANUEXITUINDEX));
-//    }
-//
-//    /**
-//     * After we have parked all the cars, here's how The Parking should look :
-//     * UUUUU
-//     * C=CUD
-//     * DM=MU
-//     * UUUUU
-//     * UUUUU
-//     * The Parking has 17 bays left
-//     * After we try to unpark the car at position 3, nothing should happen because there are no cars there.
-//     * If we unpark the car at the position 13, The Parking then looks like :
-//     * UUUUU
-//     * C=CUD
-//     * DM=UU
-//     * UUUUU
-//     * UUUUU
-//     * The Parking has 18 bays left
-//     */
-//    @Test
-//    public void testUnparkCarToString()
-//    {
-//        assertEquals(7, parking.parkCar('C'));
-//        assertEquals(9, parking.parkCar('C'));
-//        assertEquals(11, parking.parkCar('M'));
-//        assertEquals(13, parking.parkCar('M'));
-//        assertEquals(10, parking.parkCar('D'));
-//        assertEquals(5, parking.parkCar('D'));
-//        assertEquals(-1, parking.parkCar('D'));
-//
-//        assertFalse(parking.unparkCar(3));
-//        assertEquals("UUUUU\nC=CUD\nDM=MU\nUUUUU\nUUUUU", parking.toString());
-//        assertEquals(17, parking.getAvailableBays());
-//
-//        assertTrue(parking.unparkCar(13));
-//        assertEquals("UUUUU\nC=CUD\nDM=UU\nUUUUU\nUUUUU", parking.toString());
-//        assertEquals(18, parking.getAvailableBays());
-//
-//        assertEquals(13, parking.parkCar('V'));
-//    }
+    @Test
+    public void testParkCarDisabled()
+    {
+        assertEquals(10, parking.parkCar('D'));
+        assertEquals(22, parking.getAvailableBays());
+
+        assertEquals(5, parking.parkCar('D'));
+        assertEquals(21, parking.getAvailableBays());
+
+        assertEquals(-1, parking.parkCar('D'));
+        assertEquals(21, parking.getAvailableBays());
+
+        assertEquals("UUUUU\nU=UUD\nDU=UU\nUUUUU\nUUUUU", parking.toString());
+    }
+
+
+
+    /**
+     * After having parked all the cars, it is only natural to be able to unpark them.
+     */
+    @Test
+    public void testUnparkCar()
+    {
+        final int firstCarBayIndex = parking.parkCar('C');
+        assertTrue(parking.unparkCar(firstCarBayIndex));
+        assertEquals(23, parking.getAvailableBays());
+        assertFalse(parking.unparkCar(firstCarBayIndex));
+
+        final int secondCarBayIndex = parking.parkCar('D');
+        assertTrue(parking.unparkCar(secondCarBayIndex));
+        assertEquals(23, parking.getAvailableBays());
+        assertFalse(parking.unparkCar(secondCarBayIndex));
+
+        assertFalse(parking.unparkCar(FIRSTUPEDESTRIANUEXITUINDEX));
+    }
+
+    /**
+     * After we have parked all the cars, here's how The Parking should look :
+     * UUUUU
+     * C=CUD
+     * DM=MU
+     * UUUUU
+     * UUUUU
+     * The Parking has 17 bays left
+     * After we try to unpark the car at position 3, nothing should happen because there are no cars there.
+     * If we unpark the car at the position 13, The Parking then looks like :
+     * UUUUU
+     * C=CUD
+     * DM=UU
+     * UUUUU
+     * UUUUU
+     * The Parking has 18 bays left
+     */
+    @Test
+    public void testUnparkCarToString()
+    {
+        assertEquals(7, parking.parkCar('C'));
+        assertEquals(9, parking.parkCar('C'));
+        assertEquals(11, parking.parkCar('M'));
+        assertEquals(13, parking.parkCar('M'));
+        assertEquals(10, parking.parkCar('D'));
+        assertEquals(5, parking.parkCar('D'));
+        assertEquals(-1, parking.parkCar('D'));
+
+        assertFalse(parking.unparkCar(3));
+        assertEquals("UUUUU\nC=CUD\nDM=MU\nUUUUU\nUUUUU", parking.toString());
+        assertEquals(17, parking.getAvailableBays());
+
+        assertTrue(parking.unparkCar(13));
+        assertEquals("UUUUU\nC=CUD\nDM=UU\nUUUUU\nUUUUU", parking.toString());
+        assertEquals(18, parking.getAvailableBays());
+
+        assertEquals(13, parking.parkCar('V'));
+    }
 }

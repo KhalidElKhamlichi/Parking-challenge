@@ -8,6 +8,10 @@ public class ParkingSpot {
         return isEmpty() && !(car instanceof DisabledCar);
     }
 
+    public boolean canPark() {
+        return isEmpty();
+    }
+
     public boolean isEmpty() {
         return representation == initialRepresentation;
     }
@@ -28,4 +32,10 @@ public class ParkingSpot {
     public String toString() {
         return String.valueOf(this.representation);
     }
+
+    public void unparkCar() {
+        this.setRepresentation(initialRepresentation);
+    }
+
+
 }
