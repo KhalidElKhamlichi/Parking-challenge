@@ -5,8 +5,8 @@ import Cars.DisabledCar;
 
 public class ParkingSpot {
 
-    private char representation = 'U';
-    private char initialRepresentation = 'U';
+    protected char representation = 'U';
+    protected char initialRepresentation = 'U';
 
 
     public boolean canPark(Car car) {
@@ -21,20 +21,13 @@ public class ParkingSpot {
         return representation == initialRepresentation;
     }
 
-    public void setRepresentation(char representation) {
-        this.representation = representation;
-    }
-
-    public void setInitialRepresentation(char initialRepresentation) {
-        this.initialRepresentation = initialRepresentation;
-    }
 
     public void parkCar(char carRepresentation) {
         this.representation = carRepresentation;
     }
 
     public void unparkCar() {
-        this.setRepresentation(initialRepresentation);
+        this.representation = initialRepresentation;
     }
 
     @Override

@@ -7,8 +7,8 @@ public class PedestrianExit extends ParkingSpot {
     private final char representation = '=';
 
     public PedestrianExit() {
-        super.setInitialRepresentation(this.representation);
-        super.setRepresentation(this.representation);
+        super.initialRepresentation = this.representation;
+        super.representation = this.representation;
     }
 
     @Override

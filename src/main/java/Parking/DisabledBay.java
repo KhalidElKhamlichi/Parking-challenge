@@ -8,8 +8,8 @@ public class DisabledBay extends ParkingSpot{
     public static final char initialRepresentation = '@';
 
     public DisabledBay() {
-        super.setInitialRepresentation(this.initialRepresentation);
-        super.setRepresentation(this.initialRepresentation);
+        super.initialRepresentation = this.initialRepresentation;
+        super.representation = this.initialRepresentation;
     }
 
     @Override
@@ -20,6 +20,6 @@ public class DisabledBay extends ParkingSpot{
 
     @Override
     public void unparkCar() {
-        super.setRepresentation(initialRepresentation);
+        super.representation = initialRepresentation;
     }
 }
